@@ -87,8 +87,8 @@
         <ul>
             <li v-for="item in items">
             Esitaja:
-            Nimi- enimi : {{newEsitajaEesNimi}}
-            Perekonnanimi- {{newEsitajaPereNimi}}
+            esitajaeesnimi: {{newEsitajaEesNimi}}
+            Perekonnanimi: {{newEsitajaPereNimi}}
             Isikukood- {{newEsitajaID}}
             E-post- {{newEsitajaEmail}}
             Telefon- {{newEsitajaTelefon}}
@@ -111,8 +111,8 @@
   methods: {
     goTab: function(a) {this.tabNr = a;},
     compileData: function() {
+      this.items.push({esitajaeesnimi: this.newEsitajaEesNimi})
       this.tabNr = 9;
-      this.items.push()
     }
   }
   })
