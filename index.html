@@ -57,7 +57,7 @@
         <div v-if="tabNr==5">
           <h2>5. Ruumi kasutamise õigus</h2>
           <input type="checkbox" name="ruumiOmanik" value="jah"/>Olen ruumi (kaas)omanik</br>
-          <input type="checkbox" name="uuriLeping" value="jah"/>Lisan üürilepingu</br>
+          <input type="checkbox" name="üüriLeping" value="jah"/>Lisan üürilepingu</br>
           <input type="checkbox" name="omanikuNõusolek" value="jah"/>Ruumi omanik annab nõusoleku</br>
           <input type="submit" value="Edasi" v-on:click="goTab(6)"/>
         </div>
@@ -81,8 +81,8 @@
           <input type="text" v-model="newAsula2" placeholder="vald/linn, alevik, küla"></br>
           <input type="text" v-model="newMajaNr2" placeholder="tänav/talu, maja nr, korteri nr"></br>
           <input type="text" v-model="newPostiIndeks2" placeholder="postiindeks"></br>
-          <input type="text" v-model="newKehtivusAlgus2" placeholder="kehtib alates">
-          <input type="text" v-model="newKehtivusLõpp2" placeholder="kehtib kuni"></br>
+          <input type="text" v-model="newKehtivusAlgus" placeholder="kehtib alates">
+          <input type="text" v-model="newKehtivusLõpp" placeholder="kehtib kuni"></br>
           <input type="submit" value="Edasi" v-on:click="goTab(8)"/>
         </div>
 
@@ -101,12 +101,47 @@
             <li>Isikukood: {{newEsitajaID}}</li>
             <li>Email: {{newEsitajaEmail}}</li>
             <li>Telefon: {{newEsitajaTelefon}}</li>
-            <li>Uue elukoha aadress:</li>
+            <hr>
+            <h5>Uue elukoha aadress</h5>
             <li>Riik: {{newRiik}}</li>
             <li>Maakond: {{newMaakond}}</li>
             <li>Asula: {{newAsula}}</li>
             <li>Maja number: {{newMajaNr}}</li>
-            
+            <li>Postiindeks: {{newPostiIndeks}}</li>
+            <hr>
+            <h5>Teised isikud, kelle elukohta muudetakse</h5>
+            <li>Eesnimi: {{newIsik1EesNimi}}</li>
+            <li>Perekonnanimi: {{newIsik1PereNimi}}</li>
+            <li>Isikukood: {{newIsik1ID</li>
+            <hr>
+            <h5>Alaealise lapse(laste) teise hooldusõigusliku vanema nõusolek</h5>
+            <li>Eesnimi: {{newEestkostjaEesNimi}}</li>
+            <li>Perekonnanimi: {{newEestkostjaPereNimi}}</li>
+            <li>Isikukood: {{newEestkostjaID}}</li>
+            <hr>
+            <h5>Ruumi kasutamise õigus</h5>
+            <hr>
+            <h5>Ruumi omaniku nõusolek</h5>
+            <h5>Omanik 1</h5>
+            <li>Eesnimi: {{newOmanik1EesNimi}}</li>
+            <li>Perekonnanimi: {{newOmanik1PereNimi}}</li>
+            <li>Isikukood: {{newOmanik1ID}}</li>
+            <h5>Omanik 2</h5>
+            <li>Eesnimi: {{newOmanik2EesNimi}}</li>
+            <li>Perekonnanimi: {{newOmanik2PereNimi}}</li>
+            <li>Isikukood: {{newOmanik2ID}}</li>
+            <hr>
+            <h5>Sideaadress</h5>
+            <li>Riik: {{newRiik2}}</li>
+            <li>Maakond: {{newMaakond2}}</li>
+            <li>Asula: {{newAsula2}}</li>
+            <li>Maja number: {{newMajaNr2}}</li>
+            <li>Postiindeks: {{newPostiIndeks2}}</li>
+            <li>Kehtivuse algus: {{newKehtivusAlgus}}</li>
+            <li>Kehtivuse lõpp: {{newKehtivusLõpp</li>
+            <hr>
+            <h5>Lisatavad dokumendid</h5>
+            <li>{{newDokumendid}}</li>
           </ul>
         </div>
       </div>
@@ -134,7 +169,7 @@
     newEestkostjaPereNimi: "",
     newEestkostjaID: "",
     ruumiOmanik: "",
-    uuriLeping: "",
+    üüriLeping: "",
     omanikuNõusolek: "",
     newOmanik1EesNimi: "",
     newOmanik1PereNimi: "",
@@ -147,8 +182,8 @@
     newAsula2: "",
     newMajaNr2: "",
     newPostiIndeks2: "",
-    newKehtivusAlgus2: "",
-    newKehtivusLõpp2: "",
+    newKehtivusAlgus: "",
+    newKehtivusLõpp: "",
     newDokumendid: "",
   },
   methods: {
