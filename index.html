@@ -5,96 +5,109 @@
       <title>Elukoha registreerimisvorm</title>
       <script src="vue.js"></script>
       <link rel="stylesheet" href="css/skeleton.css"/>
+      <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
       <div id="navigation">
-          <a href="#" v-on:click="goTab(1)">1.</a>
-          <a href="#" v-on:click="goTab(2)">2.</a>
-          <a href="#" v-on:click="goTab(3)">3.</a>
-          <a href="#" v-on:click="goTab(4)">4.</a>
-          <a href="#" v-on:click="goTab(5)">5.</a>
-          <a href="#" v-on:click="goTab(6)">6.</a>
-          <a href="#" v-on:click="goTab(7)">7.</a>
-          <a href="#" v-on:click="goTab(8)">8.</a>
+          <li class="nav-dots">
+              <span class="dot" id="dot0" v-on:click="goTab(0)"></span>
+              <span class="dot" id="dot1" v-on:click="goTab(1)"></span>
+              <span class="dot" id="dot2" v-on:click="goTab(2)"></span>
+              <span class="dot" id="dot3" v-on:click="goTab(3)"></span>
+              <span class="dot" id="dot4" v-on:click="goTab(4)"></span>
+              <span class="dot" id="dot5" v-on:click="goTab(5)"></span>
+              <span class="dot" id="dot6" v-on:click="goTab(6)"></span>
+              <span class="dot" id="dot7" v-on:click="goTab(7)"></span>
+            </li>
+
+        <div v-if="tabNr==0">
+          <h2>1. Esitaja</h2>
+          <form @submit="goTab1()">
+          <input type="text" id="1" v-model="newEsitajaEesNimi" placeholder="eesnimi" required></br>
+          <input type="text" id="2" v-model="newEsitajaPereNimi" placeholder="perekonnanimi" required></br>
+          <input type="number" id="3" v-model="newEsitajaID" placeholder="isikukood" required></br>
+          <input type="email" id="4" v-model="newEsitajaEmail" placeholder="e-post" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></br>
+          <input type="number" id="5" v-model="newEsitajaTelefon" placeholder="telefon" required></br>
+          <input type="submit" value="Edasi"/>
+        </form>
+        </div>
 
         <div v-if="tabNr==1">
-          <h2>1. Esitaja</h2>
-          <form @submit="goTab(2)">
-          <input type="text" v-model="newEsitajaEesNimi" placeholder="eesnimi" required></br>
-          <input type="text" v-model="newEsitajaPereNimi" placeholder="perekonnanimi" required></br>
-          <input type="number" v-model="newEsitajaID" placeholder="isikukood" required></br>
-          <input type="email" v-model="newEsitajaEmail" placeholder="e-post" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></br>
-          <input type="number" v-model="newEsitajaTelefon" placeholder="telefon" required></br>
+          <h2>2. Uue elukoha aadress</h2>
+          <form @submit="goTab2()">
+          <input type="text" id="6" v-model="newRiik" placeholder="riik" required></br>
+          <input type="text" id="7" v-model="newMaakond" placeholder="maakond" required></br>
+          <input type="text" id="8" v-model="newAsula" placeholder="vald/linn, alevik, küla" required></br>
+          <input type="text" id="9" v-model="newMajaNr" placeholder="tänav/talu, maja nr, korteri nr" required></br>
+          <input type="number" id="10" v-model="newPostiIndeks" placeholder="postiindeks" required></br>
           <input type="submit" value="Edasi"/>
         </form>
         </div>
 
         <div v-if="tabNr==2">
-          <h2>2. Uue elukoha aadress</h2>
-          <input type="text" v-model="newRiik" placeholder="riik" required></br>
-          <input type="text" v-model="newMaakond" placeholder="maakond" required></br>
-          <input type="text" v-model="newAsula" placeholder="vald/linn, alevik, küla" required></br>
-          <input type="text" v-model="newMajaNr" placeholder="tänav/talu, maja nr, korteri nr" required></br>
-          <input type="number" v-model="newPostiIndeks" placeholder="postiindeks" required></br>
-          <input type="submit" value="Edasi" v-on:click="goTab(3)"/>
+          <h2>3. Teised isikud, kelle elukoha aadressi muudetakse</h2>
+          <form @submit="goTab3()">
+          <input type="text" id="11" v-model="newIsik1EesNimi" placeholder="eesnimi" required>
+          <input type="text" id="12" v-model="newIsik1PereNimi" placeholder="perekonnanimi" required>
+          <input type="number" id="13" v-model="newIsik1ID" placeholder="isikukood" required></br>
+          Kui esitate elukoha andmed alaealise lapse kohta, jätkake punktis 4, muul juhul punktis 5.</br>
+          <input type="submit" value="Edasi"/>
+        </form>
         </div>
 
         <div v-if="tabNr==3">
-          <h2>3. Teised isikud, kelle elukoha aadressi muudetakse</h2>
-          <input type="text" v-model="newIsik1EesNimi" placeholder="eesnimi" required>
-          <input type="text" v-model="newIsik1PereNimi" placeholder="perekonnanimi" required>
-          <input type="number" v-model="newIsik1ID" placeholder="isikukood" required></br>
-          Kui esitate elukoha andmed alaealise lapse kohta, jätkake punktis 4, muul juhul punktis 5.</br>
-          <input type="submit" value="Edasi" v-on:click="goTab(4)"/>
+          <h2>4. Alaealise lapse (laste) teise hooldusõigusliku vanema nõusolek</h2>
+          <form @submit="goTab4()">
+          <input type="text" id="14" v-model="newEestkostjaEesNimi" placeholder="eesnimi" required>
+          <input type="text" id="15" v-model="newEestkostjaPereNimi" placeholder="perekonnanimi" required>
+          <input type="number" id="16" v-model="newEestkostjaID" placeholder="isikukood" required></br>
+          <input type="submit" value="Edasi"/>
+        </form>
         </div>
 
         <div v-if="tabNr==4">
-          <h2>4. Alaealise lapse (laste) teise hooldusõigusliku vanema nõusolek</h2>
-          <input type="text" v-model="newEestkostjaEesNimi" placeholder="eesnimi" required>
-          <input type="text" v-model="newEestkostjaPereNimi" placeholder="perekonnanimi" required>
-          <input type="number" v-model="newEestkostjaID" placeholder="isikukood" required></br>
-          <input type="submit" value="Edasi" v-on:click="goTab(5)"/>
-        </div>
-
-        <div v-if="tabNr==5">
           <h2>5. Ruumi kasutamise õigus</h2>
           <input type="checkbox" name="ruumiOmanik" value="jah"/>Olen ruumi (kaas)omanik</br>
           <input type="checkbox" name="üüriLeping" value="jah"/>Lisan üürilepingu</br>
           <input type="checkbox" name="omanikuNõusolek" value="jah"/>Ruumi omanik annab nõusoleku</br>
-          <input type="submit" value="Edasi" v-on:click="goTab(6)"/>
+          <input type="submit" value="Edasi" v-on:click="goTab(5)"/>
+        </div>
+
+        <div v-if="tabNr==5">
+          <h2>6. Ruumi omaniku nõusolek</h2>
+          Kinnitan et olen nõus ülalnimetatud isikute elukoha andmete kandmisega rahvastikuregistrisse.</br>
+          <form @submit="goTab6()">
+          <input type="text" id="17" v-model="newOmanik1EesNimi" placeholder="eesnimi" required>
+          <input type="text" id="18" v-model="newOmanik1PereNimi" placeholder="perekonnanimi" required>
+          <input type="number" id="19" v-model="newOmanik1ID" placeholder="isikukood" required></br>
+          <input type="text" id="20" v-model="newOmanik2EesNimi" placeholder="eesnimi" required>
+          <input type="text" id="21" v-model="newOmanik2PereNimi" placeholder="perekonnanimi" required>
+          <input type="number" id="22" v-model="newOmanik2ID" placeholder="isikukood" required></br>
+          <input type="submit" value="Edasi"/>
+        </form>
         </div>
 
         <div v-if="tabNr==6">
-          <h2>6. Ruumi omaniku nõusolek</h2>
-          Kinnitan et olen nõus ülalnimetatud isikute elukoha andmete kandmisega rahvastikuregistrisse.</br>
-          <input type="text" v-model="newOmanik1EesNimi" placeholder="eesnimi" required>
-          <input type="text" v-model="newOmanik1PereNimi" placeholder="perekonnanimi" required>
-          <input type="number" v-model="newOmanik1ID" placeholder="isikukood" required></br>
-          <input type="text" v-model="newOmanik2EesNimi" placeholder="eesnimi" required>
-          <input type="text" v-model="newOmanik2PereNimi" placeholder="perekonnanimi" required>
-          <input type="number" v-model="newOmanik2ID" placeholder="isikukood" required></br>
-          <input type="submit" value="Edasi" v-on:click="goTab(7)"/>
+          <h2>7. Sideaadress</h2>
+          <form @submit="goTab7()">
+          <input type="text" id="23" v-model="newRiik2" placeholder="riik" required></br>
+          <input type="text" id="24" v-model="newMaakond2" placeholder="maakond" required></br>
+          <input type="text" id="25" v-model="newAsula2" placeholder="vald/linn, alevik, küla" required></br>
+          <input type="text" id="26" v-model="newMajaNr2" placeholder="tänav/talu, maja nr, korteri nr" required></br>
+          <input type="number" id="27" v-model="newPostiIndeks2" placeholder="postiindeks" required></br>
+          <input type="date" id="28" v-model="newKehtivusAlgus" placeholder="kehtib alates" required>
+          <input type="date" id="29" v-model="newKehtivusLõpp" placeholder="kehtib kuni" required></br>
+          <input type="submit" value="Edasi"/>
+        </form>
         </div>
 
         <div v-if="tabNr==7">
-          <h2>7. Sideaadress</h2>
-          <input type="text" v-model="newRiik2" placeholder="riik" required></br>
-          <input type="text" v-model="newMaakond2" placeholder="maakond" required></br>
-          <input type="text" v-model="newAsula2" placeholder="vald/linn, alevik, küla" required></br>
-          <input type="text" v-model="newMajaNr2" placeholder="tänav/talu, maja nr, korteri nr" required></br>
-          <input type="number" v-model="newPostiIndeks2" placeholder="postiindeks" required></br>
-          <input type="date" v-model="newKehtivusAlgus" placeholder="kehtib alates" required>
-          <input type="date" v-model="newKehtivusLõpp" placeholder="kehtib kuni" required></br>
-          <input type="submit" value="Edasi" v-on:click="goTab(8)"/>
-        </div>
-
-        <div v-if="tabNr==8">
           <h2>8. Lisatavad dokumendid</h2>
           <input type="text" v-model="newDokumendid" placeholder="loetlege lisatavad dokumendid"></br>
           <input type="submit" value="Informatsiooni ülevaade" v-on:click="compileData"/>
         </div>
 
-        <div v-if="tabNr==9">
+        <div v-if="tabNr==8">
           <h2>Andmete ülevaade</h2>
           <ul>
             <h5>Esitaja</h5>
