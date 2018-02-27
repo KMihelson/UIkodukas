@@ -3,14 +3,17 @@
     <head>
       <meta charset='utf-8'>
       <title>Elukoha registreerimisvorm</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="vue.js"></script>
       <link rel="stylesheet" href="css/skeleton.css"/>
       <link rel="stylesheet" href="css/style.css"/>
+      <link rel="shortcut icon" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/favicon.ico">
     </head>
-    <body>
-      <div id="navigation">
-          <li class="nav-dots">
-              <span class="dot" id="dot0" v-on:click="goTab(0)"></span>
+    <body style="background-color:rgb(191, 229, 241)">
+      <h1 style="text-align:center">Elukoha registreerimisvorm</h1>
+      <div id="navigation" style="padding-left: 40px; padding-right: 40px; padding-top: 40px;">
+          <li class="nav-dots" id="navdots">
+              <span class="dot" id="dot0" v-on:click="goTab(0)" style="background-color: rgb(13, 44, 90);"></span>
               <span class="dot" id="dot1" v-on:click="goTab(1)"></span>
               <span class="dot" id="dot2" v-on:click="goTab(2)"></span>
               <span class="dot" id="dot3" v-on:click="goTab(3)"></span>
@@ -21,60 +24,69 @@
             </li>
 
         <div v-if="tabNr==0">
-          <h2>1. Esitaja</h2>
+          <h4>1. Esitaja</h4>
           <form @submit="goTab1()">
           <input type="text" id="1" v-model="newEsitajaEesNimi" placeholder="eesnimi" required></br>
           <input type="text" id="2" v-model="newEsitajaPereNimi" placeholder="perekonnanimi" required></br>
           <input type="number" id="3" v-model="newEsitajaID" placeholder="isikukood" required></br>
           <input type="email" id="4" v-model="newEsitajaEmail" placeholder="e-post" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></br>
           <input type="number" id="5" v-model="newEsitajaTelefon" placeholder="telefon" required></br>
-          <input type="submit" value="Edasi"/>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;"/>
         </form>
         </div>
 
         <div v-if="tabNr==1">
-          <h2>2. Uue elukoha aadress</h2>
+          <h4>2. Uue elukoha aadress</h4>
           <form @submit="goTab2()">
           <input type="text" id="6" v-model="newRiik" placeholder="riik" required></br>
           <input type="text" id="7" v-model="newMaakond" placeholder="maakond" required></br>
           <input type="text" id="8" v-model="newAsula" placeholder="vald/linn, alevik, küla" required></br>
           <input type="text" id="9" v-model="newMajaNr" placeholder="tänav/talu, maja nr, korteri nr" required></br>
           <input type="number" id="10" v-model="newPostiIndeks" placeholder="postiindeks" required></br>
-          <input type="submit" value="Edasi"/>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;"/>
         </form>
         </div>
 
         <div v-if="tabNr==2">
-          <h2>3. Teised isikud, kelle elukoha aadressi muudetakse</h2>
+          <h4>3. Teised isikud, kelle elukoha aadressi muudetakse</h4>
           <form @submit="goTab3()">
-          <input type="text" id="11" v-model="newIsik1EesNimi" placeholder="eesnimi" required>
-          <input type="text" id="12" v-model="newIsik1PereNimi" placeholder="perekonnanimi" required>
-          <input type="number" id="13" v-model="newIsik1ID" placeholder="isikukood" required></br>
+          <input type="text" id="11" v-model="newIsik1EesNimi" placeholder="eesnimi">
+          <input type="text" id="12" v-model="newIsik1PereNimi" placeholder="perekonnanimi">
+          <input type="number" id="13" v-model="newIsik1ID" placeholder="isikukood"></br>
+          <input type="text" id="30" v-model="newIsik1EesNimi1" placeholder="eesnimi">
+          <input type="text" id="31" v-model="newIsik1PereNimi1" placeholder="perekonnanimi">
+          <input type="number" id="32" v-model="newIsik1ID1" placeholder="isikukood"></br>
+          <input type="text" id="33" v-model="newIsik1EesNimi2" placeholder="eesnimi">
+          <input type="text" id="34" v-model="newIsik1PereNimi2" placeholder="perekonnanimi">
+          <input type="number" id="35" v-model="newIsik1ID2" placeholder="isikukood"></br>
+          <input type="text" id="36" v-model="newIsik1EesNimi3" placeholder="eesnimi">
+          <input type="text" id="37" v-model="newIsik1PereNimi3" placeholder="perekonnanimi">
+          <input type="number" id="38" v-model="newIsik1ID3" placeholder="isikukood"></br>
           Kui esitate elukoha andmed alaealise lapse kohta, jätkake punktis 4, muul juhul punktis 5.</br>
-          <input type="submit" value="Edasi"/>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;"/>
         </form>
         </div>
 
         <div v-if="tabNr==3">
-          <h2>4. Alaealise lapse (laste) teise hooldusõigusliku vanema nõusolek</h2>
+          <h4>4. Alaealise lapse (laste) teise hooldusõigusliku vanema nõusolek</h4>
           <form @submit="goTab4()">
           <input type="text" id="14" v-model="newEestkostjaEesNimi" placeholder="eesnimi" required>
           <input type="text" id="15" v-model="newEestkostjaPereNimi" placeholder="perekonnanimi" required>
           <input type="number" id="16" v-model="newEestkostjaID" placeholder="isikukood" required></br>
-          <input type="submit" value="Edasi"/>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;"/>
         </form>
         </div>
 
         <div v-if="tabNr==4">
-          <h2>5. Ruumi kasutamise õigus</h2>
-          <input type="checkbox" name="ruumiOmanik" value="jah"/>Olen ruumi (kaas)omanik</br>
-          <input type="checkbox" name="üüriLeping" value="jah"/>Lisan üürilepingu</br>
-          <input type="checkbox" name="omanikuNõusolek" value="jah"/>Ruumi omanik annab nõusoleku</br>
-          <input type="submit" value="Edasi" v-on:click="goTab(5)"/>
+          <h4>5. Ruumi kasutamise õigus</h4>
+          <input type="checkbox" name="ruumiOmanik" value="Olen ruumi (kaas)omanik" v-model="checkedvalues"/>Olen ruumi (kaas)omanik</br>
+          <input type="checkbox" name="üüriLeping" value="Lisan üürilepingu" v-model="checkedvalues"/>Lisan üürilepingu</br>
+          <input type="checkbox" name="omanikuNõusolek" value="Ruumi omanik annab nõusoleku" v-model="checkedvalues"/>Ruumi omanik annab nõusoleku</br>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;" v-on:click="goTab(5)"/>
         </div>
 
         <div v-if="tabNr==5">
-          <h2>6. Ruumi omaniku nõusolek</h2>
+          <h4>6. Ruumi omaniku nõusolek</h4>
           Kinnitan et olen nõus ülalnimetatud isikute elukoha andmete kandmisega rahvastikuregistrisse.</br>
           <form @submit="goTab6()">
           <input type="text" id="17" v-model="newOmanik1EesNimi" placeholder="eesnimi" required>
@@ -83,32 +95,32 @@
           <input type="text" id="20" v-model="newOmanik2EesNimi" placeholder="eesnimi" required>
           <input type="text" id="21" v-model="newOmanik2PereNimi" placeholder="perekonnanimi" required>
           <input type="number" id="22" v-model="newOmanik2ID" placeholder="isikukood" required></br>
-          <input type="submit" value="Edasi"/>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;"/>
         </form>
         </div>
 
         <div v-if="tabNr==6">
-          <h2>7. Sideaadress</h2>
+          <h4>7. Sideaadress</h4>
           <form @submit="goTab7()">
           <input type="text" id="23" v-model="newRiik2" placeholder="riik" required></br>
           <input type="text" id="24" v-model="newMaakond2" placeholder="maakond" required></br>
           <input type="text" id="25" v-model="newAsula2" placeholder="vald/linn, alevik, küla" required></br>
           <input type="text" id="26" v-model="newMajaNr2" placeholder="tänav/talu, maja nr, korteri nr" required></br>
           <input type="number" id="27" v-model="newPostiIndeks2" placeholder="postiindeks" required></br>
-          <input type="date" id="28" v-model="newKehtivusAlgus" placeholder="kehtib alates" required>
-          <input type="date" id="29" v-model="newKehtivusLõpp" placeholder="kehtib kuni" required></br>
-          <input type="submit" value="Edasi"/>
+          <input type="text" id="28" v-model="newKehtivusAlgus" placeholder="kehtib alates" required>
+          <input type="text" id="29" v-model="newKehtivusLõpp" placeholder="kehtib kuni" required></br>
+          <input type="submit" value="Edasi" style="color: #3c3874; background-color: #5584ff75;"/>
         </form>
         </div>
 
         <div v-if="tabNr==7">
-          <h2>8. Lisatavad dokumendid</h2>
-          <input type="text" v-model="newDokumendid" placeholder="loetlege lisatavad dokumendid"></br>
-          <input type="submit" value="Informatsiooni ülevaade" v-on:click="compileData"/>
+          <h4>8. Lisatavad dokumendid</h4>
+          <input type="text" v-model="newDokumendid" placeholder="loetlege lisatavad dokumendid" style="width: 243px;"></br>
+          <input type="submit" value="Informatsiooni ülevaade" style="color: #3c3874; background-color: #5584ff75;" v-on:click="compileData"/>
         </div>
 
         <div v-if="tabNr==8">
-          <h2>Andmete ülevaade</h2>
+          <h4>Andmete ülevaade</h4>
           <ul>
             <h5>Esitaja</h5>
             <li>Eesnimi: {{newEsitajaEesNimi}}</li>
@@ -116,26 +128,36 @@
             <li>Isikukood: {{newEsitajaID}}</li>
             <li>Email: {{newEsitajaEmail}}</li>
             <li>Telefon: {{newEsitajaTelefon}}</li>
-            <hr>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Uue elukoha aadress</h5>
             <li>Riik: {{newRiik}}</li>
             <li>Maakond: {{newMaakond}}</li>
             <li>Asula: {{newAsula}}</li>
             <li>Maja number: {{newMajaNr}}</li>
             <li>Postiindeks: {{newPostiIndeks}}</li>
-            <hr>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Teised isikud, kelle elukohta muudetakse</h5>
             <li>Eesnimi: {{newIsik1EesNimi}}</li>
             <li>Perekonnanimi: {{newIsik1PereNimi}}</li>
-            <li>Isikukood: {{newIsik1ID}}</li>
-            <hr>
+            <li>Isikukood: {{newIsik1ID}}</li><br>
+            <li>Eesnimi: {{newIsik1EesNimi1}}</li>
+            <li>Perekonnanimi: {{newIsik1PereNimi1}}</li>
+            <li>Isikukood: {{newIsik1ID1}}</li><br>
+            <li>Eesnimi: {{newIsik1EesNimi2}}</li>
+            <li>Perekonnanimi: {{newIsik1PereNimi2}}</li>
+            <li>Isikukood: {{newIsik1ID2}}</li><br>
+            <li>Eesnimi: {{newIsik1EesNimi3}}</li>
+            <li>Perekonnanimi: {{newIsik1PereNimi3}}</li>
+            <li>Isikukood: {{newIsik1ID3}}</li><br>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Alaealise lapse(laste) teise hooldusõigusliku vanema nõusolek</h5>
             <li>Eesnimi: {{newEestkostjaEesNimi}}</li>
             <li>Perekonnanimi: {{newEestkostjaPereNimi}}</li>
             <li>Isikukood: {{newEestkostjaID}}</li>
-            <hr>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Ruumi kasutamise õigus</h5>
-            <hr>
+            <ul><li v-for="item in checkedvalues">{{item}}</li></ul>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Ruumi omaniku nõusolek</h5>
             <h5>Omanik 1</h5>
             <li>Eesnimi: {{newOmanik1EesNimi}}</li>
@@ -145,7 +167,7 @@
             <li>Eesnimi: {{newOmanik2EesNimi}}</li>
             <li>Perekonnanimi: {{newOmanik2PereNimi}}</li>
             <li>Isikukood: {{newOmanik2ID}}</li>
-            <hr>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Sideaadress</h5>
             <li>Riik: {{newRiik2}}</li>
             <li>Maakond: {{newMaakond2}}</li>
@@ -154,10 +176,11 @@
             <li>Postiindeks: {{newPostiIndeks2}}</li>
             <li>Kehtivuse algus: {{newKehtivusAlgus}}</li>
             <li>Kehtivuse lõpp: {{newKehtivusLõpp}}</li>
-            <hr>
+            <hr style="border-color: rgb(0, 108, 141)">
             <h5>Lisatavad dokumendid</h5>
             <li>{{newDokumendid}}</li>
           </ul>
+          <button style="color: #3c3874; background-color: #5584ff75;">Lõpeta ülevaade ning allkirjasta ID-kaardiga</button>
         </div>
       </div>
       <script src="functionality.js"></script>

@@ -1,7 +1,7 @@
 .dot {
     height: 25px;
     width: 25px;
-    background-color: #bbb;
+    background-color: rgb(74, 132, 218);
     border-radius: 50%;
     display: inline-block;
 }
@@ -10,21 +10,9 @@
 
 .nav-dots {
 	width: 100%;
-	bottom: 9px;
+	bottom: 40px;
 	height: 11px;
 	display: block;
 	position: absolute;
 	text-align: center;
-}
-
-
-.nav-dot + input[type=checkbox]:checked {
-    top: -5px;
-	width: 11px;
-	height: 11px;
-	margin: 0 4px;
-	position: relative;
-	border-radius: 100%;
-	display: inline-block;
-	background-color: rgba(28, 152, 224, 0.6);
 }
